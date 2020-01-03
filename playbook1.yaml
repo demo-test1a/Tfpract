@@ -1,0 +1,19 @@
+---
+- name: Play1
+  hosts: all
+  tasks:
+  - name: create a test directory
+    file: 
+      path: /home/ec2-user/test
+      state: directory
+      mode: '0755'
+  - name: create a demo files
+    file:
+      path: /home/ec2-user/test/index.html
+      state: touch
+      mode: '0644'
+  - name: Copy a file
+    copy:
+      src: /home/ec2-user/test/index.html
+      dest: /tmp/
+      remote_src: yes
